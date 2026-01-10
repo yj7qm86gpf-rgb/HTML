@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>La biblioteca de mi novia</title>
+    </head>
+    <style>
+        body {
+            background-color: turquoise;
+        }
+        body {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        h1 {
+            text-align: center;
+            font-size: 40px;
+        }
+        .contenedor_0 {
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .centrada {
+            display: block;
+            margin: auto;
+        }
+        .contenedor_1, .contenedor_2, .contenedor_3, .contenedor_4, .contenedor_5, .contenedor_6, .contenedor_7, .contenedor_8, .contenedor_9, .contenedor_10, .contenedor_11, .contenedor_12{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bold;
+            white-space: nowrap;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 175px;
+            margin-top: 30px;
+            font-size: 25px;
+            width: 100%;
+        }
+        .c1_1, .c1_2, .c1_3, .c2_1, .c2_2, .c2_3, .c3_1, .c3_2, .c3_3, .c4_1, .c4_2, .c4_3, .c5_1, .c5_2, .c5_3, .c6_1, .c6_2, .c6_3, .c7_1, .c7_2, .c7_3, .c8_1, .c8_2, .c8_3, .c9_1, .c9_2, .c9_3, .c10_1, .c10_2, .c10_3,
+        .c11_1, .c11_2, .c11_3, .c12_1, .c12_2, .c12_3{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            text-decoration: none;
+            background-color: #000080;
+            color: white;
+            padding: 20px; /*Para que el interior del texto no toque los bordes*/
+            border-radius: 8px; /*Bordes mas redondeados*/
+            line-height: 1.2; /*Quitar márgenes extras de los párrafos de dentro*/
+            margin: 0;
+            min-width: 100px;
+            text-align: center;
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .c1_1:hover, .c1_2:hover, .c1_3:hover, .c2_1:hover, .c2_2:hover, .c2_3:hover, .c3_1:hover, .c3_2:hover, .c3_3:hover, .c4_1:hover, .c4_2:hover, .c4_3:hover, .c5_1:hover, .c5_2:hover, .c5_3:hover, .c6_1:hover, .c6_2:hover, .c6_3:hover, .c7_1:hover, .c7_2:hover, .c7_3:hover,
+        .c8_1:hover, .c8_2:hover, .c8_3:hover, .c9_1:hover, .c9_2:hover, .c9_3:hover, .c10_1:hover, .c10_2:hover, .c10_3:hover, .c11_1:hover, .c11_2:hover, .c11_3:hover, .c12_1:hover, .c12_2:hover, .c12_3:hover{
+            transform: scale(1.07);
+            z-index: 10;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .contenedor_1 a, .contenedor_2 a, .contenedor_3 a, .contenedor_4 a, .contenedor_5 a, .contenedor_6 a, .contenedor_7 a, .contenedor_8 a, .contenedor_9 a, .contenedor_10 a, .contenedor_11 a, .contenedor_12 a{
+            color: white !important; /* El !important asegura que gane a cualquier otro color */
+            text-decoration: none;
+        }
+        .menu-superior {
+            background-color: #000080; /* El azul marino de tus libros */
+            color: white;
+            display: flex;             /* Alinea logo y links en horizontal */
+            justify-content: space-between; 
+            align-items: center;
+            padding: 10px 50px;
+            position: sticky;          /* ¡Mágico! Se queda pegado al bajar */
+            top: 0;                    /* Posición en el borde superior */
+            z-index: 1000;             /* Asegura que flote sobre los libros */
+        }
+
+        .menu-superior ul {
+            display: flex;
+            gap: 30px;                 /* Espacio entre los enlaces */
+            list-style: none;          /* Quita los puntos de la lista */
+            margin: 0;
+        }
+
+        .menu-superior a {
+            color: white;
+            text-decoration: none;     /* Quita el subrayado */
+            font-weight: bold;
+        }
+    </style>
+   
+    <body>
+        <nav class="menu-superior">
+            <div class="logo">Biblioteca de Mi Novia</div>
+            <ul>
+                <li><a href="Biblioteca_Tati.html">Página Principal</a></li>
+                <li><a href="Biblioteca_Tati_Pelis.html">Películas</a></li>
+                <li><a href="Créditos.html">Créditos</a></li>
+            </ul>
+        </nav>
+        <h1>TU PÁGINA DE LECTURA (Hecha por tu novio)</h1>
+        <p><img src="archivos y fotos/Taylor leyendo.webp" alt="Imagen" class="centrada"></p>
+        <div class="contenedor_0">
+            <p class="c0_1">Aquí encontrarás todos los libros que te molan/interesan en versión digital listos para descargar y leer.</p>
+            <p class="c0_2">Se que no te mola demasiado este tipo de lectura pero es mejor que no tenerlos, a si que espero que te guste el regalo :).</p>
+            <p class="c0_3">(Hecho con amor para ti <3)</p>
+        </div>
+
+
+        <div class="contenedor_1">
+            <p class="c1_1">
+                <a href="archivos y fotos/Powerless_1.pdf" class="c1_1">
+                    <img src="archivos y fotos/Powerless.jpg" class="Powerless_1" width="225"><br>
+                    Powerless
+                </a>
+            </p>
+            <p class="c1_2">
+                <a href="archivos y fotos/Powerfull_1_5.pdf" class="c1_2">
+                    <img src="archivos y fotos/Powerfull.jpg" class="Powerfull_1.5" width="225"><br>
+                    Powerfull
+                </a>
+            </p>
+            <p class="c1_3">
+                <a href="archivos y fotos/Reckless_2.pdf" class="c1_3">
+                    <img src="archivos y fotos/Recklessjpg" class="Reckless_2" width="225"><br>
+                    Reckless
+                </a>
+            </p>
+        </div>
+
+
+        <div class="contenedor_2">
+            <p class="c2_1">
+                <a href="archivos y fotos/Fearless_3.pdf" class="c2_1">
+                    <img src="archivos y fotos/Fearless.jpeg" class="Fearless_3" width="225"><br>
+                    Fearless
+                </a>
+            </p>
+            <p class="c2_2">
+                <a href="archivos y fotos/La Asistenta Freida McFadden.pdf" class="c2_2">
+                    <img src="archivos y fotos/La Asistenta Libro.webp" class="La_Asistenta" width="225"><br>
+                    La asistenta
+                </a>
+            </p>
+            <p class="c2_3">
+                <a href="archivos y fotos/Una corte de rosas y espinas.pdf" class="c_2_3">
+                    <img src="archivos y fotos/Un corte de rosas y espinas.jpg" class="Una_Corte_De_Rosas_Y_Espinas_1" width="225"><br>
+                    Una corte de rosas y espinas
+                </a>
+            </p>
+        </div>
+
+
+        <div class="contenedor_3">
+            <p class="c3_1">
+                <a href="archivos y fotos/Una Corte de Niebla y Furia - Sarah J. Maas.pdf" class="c3_1">
+                    <img src="archivos y fotos/Un corte de niebla y furia.jpg" class="Una_Corte_De_Niebla_Y_Furia_2" width="225"><br>
+                    Una corte de niebla y furia
+                </a>
+            </p>
+            <p class="c3_2">
+                <a href="archivos y fotos/Una Corte de Alas y Ruina - Sarah J. Maas.pdf" class="c3_2">
+                    <img src="archivos y fotos/Un corte de alas y ruina.jpg" class="Una_Corte_De_Alas_Y_Ruina_3" width="225"><br>
+                    Una corte de alas y ruina
+                </a>
+            </p>
+            <p class="c3_3">
+                <a href="archivos y fotos/Una corte de hielo y estrellas - Sarah J Maas.pdf" class="c_3_3">
+                    <img src="archivos y fotos/Un corte de hielo y estrellas.jpg" class="Una_Corte_De_Hielo_Y_Estrellas_4" width="225"><br>
+                    Una corte de hielo y estrellas
+                </a>
+            </p>
+        </div>
+
+
+        <div class="contenedor_4">
+            <p class="c4_1">
+                <a href="archivos y fotos/Una Corte de Llamas Plateadas - Sarah J. Maas.pdf" class="c4_1">
+                    <img src="archivos y fotos/Un corte de llamas plateadas.webp" class="Una_Corte_De_Llamas_Plateadas_5" width="225"><br>
+                    Una corte de llamas plateadas
+                </a>
+            </p>
+            <p class="c4_2">
+                <a href="archivos y fotos/Destrozame Tahereh Mafi.pdf" class="c4_2">
+                    <img src="archivos y fotos/Shatter me.jpg" class="Shatter_me_1" width="225"><br>
+                    Shatter me
+                </a>
+            </p>
+            <p class="c4_3">
+                <a href="archivos y fotos/Libérame Tahereh Mafi.pdf" class="c_4_3">
+                    <img src="archivos y fotos/Unravel me.jpg" class="Unravel_Me_2" width="225"><br>
+                    Unravel me
+                </a>
+            </p>
+        </div>
+
+
+        <div class="contenedor_5">
+            <p class="c5_1">
+                <a href="archivos y fotos/Enciéndeme - Tahereh Mafi.pdf" class="c5_1">
+                    <img src="archivos y fotos/Ignite me.jpg" class="Ignite_Me_3" width="225"><br>
+                    Ignite me
+                </a>
+            </p>
+            <p class="c5_2">
+                <a href="archivos y fotos/Reconstruyeme - Tahereh Mafi.pdf" class="c5_2">
+                    <img src="archivos y fotos/Restore me.jpg" class="Restore_Me_4" width="225"><br>
+                    Restore me
+                </a>
+            </p>
+            <p class="c5_3">
+                <a href="archivos y fotos/Desafiame Tahereh Mafi.pdf" class="c_5_3">
+                    <img src="archivos y fotos/Defy me.jpg" class="Defy_me_5" width="225"><br>
+                    Defy me
+                </a>
+            </p>
+        </div>
+
+
+        <div class="contenedor_6">
+            <p class="c6_1">
+                <a href="archivos y fotos/Imagine Me Tahereh Mafi.pdf" class="c6_1">
+                    <img src="archivos y fotos/Imagine me.jpg" class="Imagine_Me_6" width="225"><br>
+                    Imagine me
+                </a>
+            </p>
+            <p class="c6_2">
+                <a href="archivos y fotos/Destroy Me - Tehereh Mafi.pdf" class="c6_2">
+                    <img src="archivos y fotos/Destroy me.jpg" class="Destroy_Me_1_5" width="225"><br>
+                    Destroy me
+                </a>
+            </p>
+            <p class="c6_3">
+                <a href="archivos y fotos/Fracture Me 2.5.pdf" class="c_6_3">
+                    <img src="archivos y fotos/Fracture me.jpg" class="Fracture_Me_2_5" width="225"><br>
+                    Fracture me
+                </a>
+            </p>
+        </div>
+
+
+        <div class="contenedor_7">
+            <p class="c7_1">
+                <a href="archivos y fotos/Shadow Me - Shatter Me Series.pdf" class="c7_1">
+                    <img src="archivos y fotos/Shadow me.jpg" class="Shadow_Me_4_5" width="225"><br>
+                    Shadow me
+                </a>
+            </p>
+            <p class="c7_2">
+                <a href="archivos y fotos/Revelame Tahereh Mafi.pdf" class="c7_2">
+                    <img src="archivos y fotos/Reveal me.jpg" class="Reveal_Me_5_5" width="225"><br>
+                    Reveal me
+                </a>
+            </p>
+            <p class="c7_3">
+                <a href="https://es.scribd.com/document/648854287/6-5-Believe-Me-Tahereh-Mafi" class="c_7_3">
+                    <img src="archivos y fotos/Believe me.jpg" class="Believe_Me_6_5" width="225"><br>
+                    Believe me
+                </a>
+            </p>
+        </div>
+
+
+        <div class="contenedor_8">
+            <p class="c8_1">
+                <a href="archivos y fotos/Binding 13 - Chloe Walsh.pdf" class="c8_1">
+                    <img src="archivos y fotos/Binding 13.jpg" class="Binding_13" width="225"><br>
+                    Binding 13
+                </a>
+            </p>
+            <p class="c8_2">
+                <a href="https://spread.epub.pub/epub/65b1129a120eae6601723442" class="c8_2">
+                    <img src="archivos y fotos/Keeping 13.jpg" class="Keeping_13" width="225"><br>
+                    Keeping 13
+                </a>
+            </p>
+            <p class="c8_3">
+                <a href="archivos y fotos/Saving 6 Chloe Walsh.pdf" class="c_8_3">
+                    <img src="archivos y fotos/Saving 6.jpg" class="Saving_6" width="225"><br>
+                    Saving 6
+                </a>
+            </p>
+        </div>
+
+
+        <div class="contenedor_9">
+            <p class="c9_1">
+                <a href="https://es.scribd.com/document/761539569/Redeeming-6" class="c9_1">
+                    <img src="archivos y fotos/Redeeming 6.avif" class="Redeeming_6" width="225"><br>
+                    Redeeming 6
+                </a>
+            </p>
+            <p class="c9_2">
+                <a href="archivos y fotos/Taming 7 Chloe Walsh.pdf" class="c9_2">
+                    <img src="archivos y fotos/Tamming 77.jpg" class="Taming_7" width="225"><br>
+                    Taming 7
+                </a>
+            </p>
+            <p class="c9_3">
+                <a href="archivos y fotos/Releasing 10 Chloe Walsh.pdf" class="c_9_3">
+                    <img src="archivos y fotos/Releasing 10.jpg" class="Releasing_10" width="225"><br>
+                    Releasing 10
+                </a>
+            </p>
+        </div>
+
+
+        <div class="contenedor_10">
+            <p class="c10_1">
+                <a href="archivos y fotos/Los siete maridos de Evelyn Hugo.pdf" class="c10_1">
+                    <img src="archivos y fotos/Los siete maridos de Evelyn Hugo.jpg" class="Los_Siete_Maridos_De_Evelyn_Hugo" width="225"><br>
+                    Los siete maridos de Evelyn Hugo
+                </a>
+            </p>
+            <p class="c10_2">
+                <a href="https://es.scribd.com/document/670122038/Mejor-Que-en-Las-Peliculas-Lynn-Painter" class="c10_2">
+                    <img src="archivos y fotos/Mejor que en las películas.jpg" class="Mejor_Que_En_Las_Peliculas" width="225"><br>
+                    Mejor que en las películas
+                </a>
+            </p>
+            <p class="c10_3">
+                <a href="archivos y fotos/El color de las cosas invisibles - Andrea Longarela.pdf" class="c_10_3">
+                    <img src="archivos y fotos/El color de las cosas invisibles.jpg" class="El_Color_De_Las_Cosas_Invisibles" width="225"><br>
+                    El color de las cosas invisibles
+                </a>
+            </p>
+        </div>
+
+
+        <div class="contenedor_11">
+            <p class="c11_1">
+                <a href="archivos y fotos/Bad Ash Alina Not.pdf" class="c11_1">
+                    <img src="archivos y fotos/Saltan chispas.jpg" class="Bad_Ash" width="225"><br>
+                    Bad ash (Trilogía entera)
+                </a>
+            </p>
+            <p class="c11_2">
+                <a href="archivos y fotos/Hecha de Estrellas - Ashley Herring Blake.pdf" class="c11_2">
+                    <img src="archivos y fotos/Hecha de estrellas.jpg" class="Hecha_De_Estrellas" width="225"><br>
+                    Hecha de estrellas
+                </a>
+            </p>
+            <p class="c11_3">
+                <a href="archivos y fotos/Llamada a Sam Dustin Thao.pdf" class="c_11_3">
+                    <img src="archivos y fotos/Has llamado a sam.jpg" class="Has_Llamado_A_Sam" width="225"><br>
+                    Has llamado a Sam
+                </a>
+            </p>
+        </div>
+
+
+        <div class="contenedor_12">
+            <p class="c12_1">
+                <a href="archivos y fotos/bad ash suelo sagrado.pdf" class="c12_1">
+                    <img src="archivos y fotos/Bad ash suelo sagrado.jpg" class="Bad_Ash_Suelo_Sagrado" width="225"><br>
+                    Bad ash: Suelo sagrado
+                </a>
+            </p>
+            <p class="c12_2">
+                <a href="archivos y fotos/Piezas Rotas Alina.pdf" class="c12_2">
+                    <img src="archivos y fotos/Tyler.jpg" class="Bad_Ash_Tyler" width="225"><br>
+                    Bad ash: Tyler
+                </a>
+            </p>
+            <p class="c12_3">
+                <a href="archivos y fotos/bad ash suelo sagrado 2.pdf" class="c_12_3">
+                    <img src="archivos y fotos/Bad ash suelo sagrado 2.jpg" class="Bad_Ash_Suelo_Sagrado_2" width="225"><br>
+                    Bad ash: Suelo sagrado II
+                </a>
+            </p>
+        </div>
+    </body>
+</html>

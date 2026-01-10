@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>La biblioteca de mi novia</title>
+    </head>
+    <style>
+        body {
+            background-color: turquoise;
+        }
+        body {
+            font-family: 'Courier New', Courier, monospace;
+        }
+        h1 {
+            text-align: center;
+            font-size: 40px;
+        }
+        .contenedor_0 {
+            text-align: center;
+            font-size: 25px;
+            font-weight: bold;
+        }
+        .centrada {
+            display: block;
+            margin: auto;
+        }
+        .contenedor_1, .contenedor_2, .contenedor_3, .contenedor_4, .contenedor_5{
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            font-weight: bold;
+            white-space: nowrap;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 175px;
+            margin-top: 30px;
+            font-size: 25px;
+            width: 100%;
+        }
+        .c1_1, .c1_2, .c1_3, .c2_1, .c2_2, .c2_3, .c3_1, .c3_2, .c3_3, .c4_1, .c4_2, .c4_3, .c5_1, .c5_2, .c5_3{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            text-decoration: none;
+            background-color: #000080;
+            color: white;
+            padding: 20px; /*Para que el interior del texto no toque los bordes*/
+            border-radius: 8px; /*Bordes mas redondeados*/
+            line-height: 1.2; /*Quitar márgenes extras de los párrafos de dentro*/
+            margin: 0;
+            min-width: 100px;
+            text-align: center;
+            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .c1_1:hover, .c1_2:hover, .c1_3:hover, .c2_1:hover, .c2_2:hover, .c2_3:hover, .c3_1:hover, .c3_2:hover, .c3_3:hover, .c4_1:hover, .c4_2:hover, .c4_3:hover, .c5_1:hover, .c5_2:hover, .c5_3:hover{
+            transform: scale(1.07);
+            z-index: 10;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .contenedor_1 a, .contenedor_2 a, .contenedor_3 a, .contenedor_4 a, .contenedor_5 a {
+            color: white !important; /* El !important asegura que gane a cualquier otro color */
+            text-decoration: none;
+        }
+        .menu-superior {
+            background-color: #000080; /* El azul marino de tus libros */
+            color: white;
+            display: flex;             /* Alinea logo y links en horizontal */
+            justify-content: space-between; 
+            align-items: center;
+            padding: 10px 50px;
+            position: sticky;          /* ¡Mágico! Se queda pegado al bajar */
+            top: 0;                    /* Posición en el borde superior */
+            z-index: 1000;             /* Asegura que flote sobre los libros */
+        }
+
+        .menu-superior ul {
+            display: flex;
+            gap: 30px;                 /* Espacio entre los enlaces */
+            list-style: none;          /* Quita los puntos de la lista */
+            margin: 0;
+        }
+
+        .menu-superior a {
+            color: white;
+            text-decoration: none;     /* Quita el subrayado */
+            font-weight: bold;
+        }
+    </style>
+   
+    <body>
+        <nav class="menu-superior">
+            <div class="logo">Biblioteca de Mi Novia</div>
+            <ul>
+                <li><a href="Biblioteca_Tati.html">Página Principal</a></li>
+                <li><a href="Biblioteca_Tati_Pelis.html">Películas</a></li>
+                <li><a href="Créditos.html">Créditos</a></li>
+            </ul>
+        </nav>
+        <h1>TU PÁGINA DE PELÍCULAS (Hecha por tu novio también)</h1>
+        <p><img src="archivos y fotos/taylor peli.jpeg"" alt="Imagen" class="centrada"></p>
+        <div class="contenedor_0">
+            <p class="c0_1">Aquí encontrarás todas las Películas que te interesan y vayas diciendome, esto me supongo que lo iré actualizando en cuanto vaya pudiendo.</p>
+            <p class="c0_2">Espero que te guste este pequeño regalo :).</p>
+            <p class="c0_3">(Hecho con amor para ti <3)</p>
+            <p class="c0_3">(AHORA MISMO PÁGINA CERRADA DEBIDO A PROBLEMAS TÉCNICOS (no hay pelis puestas ya iré actualizando)</p>
+        </div>
+    </body>
+</html>
