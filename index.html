@@ -128,6 +128,14 @@
                 padding: 0 !important;
                 gap: 15px !important;
             }
+            @media (max-width: 800px) {
+
+            .centrada {
+                width: 60% !important;   /* Ocupará solo el 60% del ancho del móvil */
+                max-width: 250px !important; /* Nunca medirá más de 250px para no verse gigante */
+                height: auto !important; /* Mantiene la proporción para que no se estire */
+            }
+        }
         }
     </style>
    
