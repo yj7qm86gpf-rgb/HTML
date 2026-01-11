@@ -2,6 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>La biblioteca de mi novia</title>
     </head>
     <style>
@@ -127,6 +128,64 @@
             font-size: 20px;
             cursor: pointer;
             margin-right: 20px;
+        }
+        /* DISEÑO PARA MÓVILES */
+        @media (max-width: 800px) {
+            /* Ajustamos la imagen de Taylor leyendo */
+            .centrada {
+                width: 80% !important;   /* Reduce el tamaño al 80% del ancho del móvil */
+                max-width: 280px !important; /* Límite para que no se vea gigante */
+                height: auto !important;
+            }
+
+            /* Títulos y textos más pequeños */
+            h1 {
+                font-size: 26px !important;
+                padding: 0 10px;
+            }
+
+            .contenedor_0 {
+                font-size: 18px !important;
+                padding: 0 15px;
+            }
+
+            /* Los discos se ponen uno debajo de otro */
+            .contenedor_1, .contenedor_2, .contenedor_3, .contenedor_4, .contenedor_5 {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 30px !important;
+                white-space: normal !important; /* Permite que el nombre de la canción use 2 líneas */
+            }
+
+            /* Ajuste de las cajas de canciones */
+            .c1_1 {
+                width: 85% !important;
+                min-width: unset !important;
+            }
+
+            /* Menú superior en columna */
+            .menu-superior {
+                flex-direction: column !important;
+                padding: 10px !important;
+                gap: 10px !important;
+            }
+
+            .menu-superior ul {
+                padding: 0 !important;
+                gap: 15px !important;
+            }
+
+            /* IMPORTANTE: Barra de música en el móvil */
+            .barra-musica {
+                flex-direction: column !important; /* Info arriba, controles abajo */
+                height: auto !important;
+                padding: 10px 5px !important;
+                gap: 10px !important;
+            }
+
+            #reproductor-audio {
+                width: 90% !important; /* El reproductor ocupa casi todo el ancho */
+            }
         }
     </style>
    
