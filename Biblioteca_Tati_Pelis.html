@@ -87,6 +87,47 @@
             text-decoration: none;     /* Quita el subrayado */
             font-weight: bold;
         }
+        .barra-musica {
+            position: fixed;
+            bottom: -100px; /* Escondida debajo de la pantalla */
+            left: 0;
+            width: 100%;
+            background-color: #000080;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            padding: 15px 0;
+            box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
+            z-index: 2000;
+            transition: bottom 0.5s ease; /* Animación de subida */
+        }
+
+        /* Clase que activaremos con JavaScript */
+        .barra-musica.activa {
+            bottom: 0;
+        }
+
+        /* Personalizamos el reproductor para que no sea gris feo */
+        #reproductor-audio {
+            width: 60%;
+            height: 35px;
+            filter: invert(100%) hue-rotate(180deg) brightness(1.5);
+        }
+
+        .info-cancion {
+            font-size: 16px;
+        }
+
+        .boton-cerrar {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            margin-right: 20px;
+        }
     </style>
    
     <body>
@@ -108,12 +149,39 @@
 
 
         <div class="contenedor_1">
-            <p class="c1_1">
-                <a href="https://youtu.be/tgVUi1gl29k" class="c1_1">
-                    <img src="archivos y fotos/Cubierta Adrian.webp" class="Invisible_String" width="225"><br>
-                    Invisible String (Adrian's version)
-                </a>
-            </p>
+            <div class="c1_1" id="activar-musica" style="cursor: pointer;">
+                <img src="archivos y fotos/Cubierta Adrian.webp" class="Invisible_String" width="225"><br>
+                Invisible String (Adrian's version)
+            </div>
         </div>
+        <div id="barra-reproductor" class="barra-musica">
+            <div class="info-cancion">
+                <strong>Sonando ahora:</strong> Invisible String (Adrian's version)
+            </div>
+            
+            <audio id="reproductor-audio" controls>
+                <source src="archivos y fotos/Invisible string (Adrian's version) [tgVUi1gl29k].mp3" type="audio/mpeg">
+                Tu navegador no soporta audio.
+            </audio>
+
+            <button onclick="cerrarReproductor()" class="boton-cerrar">✕</button>
+        </div>
+        <script>
+            const botonDisco = document.getElementById('activar-musica');
+            const barra = document.getElementById('barra-reproductor');
+            const audio = document.getElementById('reproductor-audio');
+
+            botonDisco.addEventListener('click', function() {
+                // Mostramos la barra
+                barra.classList.add('activa');
+                // Reproducimos automáticamente
+                audio.play();
+            });
+
+            function cerrarReproductor() {
+                barra.classList.remove('activa');
+                audio.pause(); // Opcional: pausar si se cierra la barra
+            }
+        </script>
     </body>
 </html>
