@@ -2,6 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>La biblioteca de mi novia</title>
     </head>
     <style>
@@ -86,6 +87,39 @@
             color: white;
             text-decoration: none;     /* Quita el subrayado */
             font-weight: bold;
+        }
+        /* DISEÑO PARA MÓVILES */
+        @media (max-width: 800px) {
+            /* Ajustamos la imagen de los créditos (Harry Styles) */
+            .centrada {
+                width: 85% !important;        /* Ocupa la mayor parte del ancho */
+                max-width: 300px !important;  /* Límite para que no se pixele */
+                height: auto !important;      /* Mantiene la proporción */
+            }
+
+            /* Reducimos el tamaño de los títulos y textos */
+            h1 {
+                font-size: 28px !important;   /* Título más acorde a pantalla pequeña */
+                padding: 0 15px;
+            }
+
+            .contenedor_0 {
+                font-size: 18px !important;   /* Texto de créditos más legible */
+                padding: 0 20px;
+                line-height: 1.4;             /* Más espacio entre líneas */
+            }
+
+            /* Adaptamos el menú superior */
+            .menu-superior {
+                flex-direction: column !important; /* Logo arriba, links abajo */
+                padding: 15px !important;
+                gap: 15px !important;
+            }
+
+            .menu-superior ul {
+                padding: 0 !important;
+                gap: 20px !important;          /* Espacio para pulsar con el dedo */
+            }
         }
     </style>
    
