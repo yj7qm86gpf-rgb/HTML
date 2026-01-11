@@ -2,6 +2,7 @@
 <html lang="es">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>La biblioteca de mi novia</title>
     </head>
     <style>
@@ -88,6 +89,45 @@
             color: white;
             text-decoration: none;     /* Quita el subrayado */
             font-weight: bold;
+        }
+        @media (max-width: 800px) {
+            /* 1. Cambiamos las filas de 3 libros por una columna vertical */
+            [class^="contenedor_"] {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 40px !important; /* Espacio entre libros hacia abajo */
+                white-space: normal !important; /* Permite que el texto largo salte de línea */
+            }
+
+            /* 2. Ajustamos el ancho de las cajas azules */
+            [class*="c1_"], [class*="c2_"], [class*="c3_"], [class*="c4_"], 
+            [class*="c5_"], [class*="c6_"], [class*="c7_"], [class*="c8_"], 
+            [class*="c9_"], [class*="c10_"], [class*="c11_"], [class*="c12_"] {
+                width: 90% !important;
+                max-width: 300px !important;
+                min-width: unset !important;
+            }
+
+            /* 3. Reducimos el tamaño de las letras para que quepan bien */
+            h1 {
+                font-size: 28px !important;
+            }
+
+            .contenedor_0 {
+                font-size: 18px !important;
+            }
+
+            /* 4. Adaptamos el menú superior */
+            .menu-superior {
+                flex-direction: column !important;
+                padding: 10px !important;
+                gap: 10px !important;
+            }
+
+            .menu-superior ul {
+                padding: 0 !important;
+                gap: 15px !important;
+            }
         }
     </style>
    
