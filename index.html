@@ -119,18 +119,14 @@
         }
         /* EFECTO APERTURA ESTILO IPHONE */
         .abriendo-app {
-            position: fixed !important;
-            z-index: 9999 !important; /* Se queda por encima de todo */
-            pointer-events: none;
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            
-            /* Se mueve al centro y se expande masivamente */
-            top: 50% !important;
-            left: 50% !important;
-            transform: translate(-50%, -50%) scale(12) !important; 
-            opacity: 0;
-            margin: 0 !important;
+            transform: scale(5) !important; /* El libro crece hasta cubrir la vista */
+            opacity: 0;                     /* Se desvanece mientras entra al PDF */
+            z-index: 9999 !important;       /* Se coloca por encima de todo */
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important; 
+            pointer-events: none;           /* Evita clics dobles */
+            transform-origin: center center !important;
         }
+
         /* Aseguramos que el contenedor padre no corte la expansión */
         [class^="contenedor_"] {
             perspective: 1000px; /* Da profundidad 3D al efecto */
