@@ -8,10 +8,11 @@
     <style>
         body {
             /* Degradado de turquesa a un azul más suave */
-            background: linear-gradient(135deg, #7FFFD4 0%, #40E0D0 100%);
+            background: linear-gradient(135deg, #a7ffeb 0%, #e0f7fa 100%);
             background-attachment: fixed; /* El fondo no se mueve al hacer scroll */
             margin: 0;
-            color: #000033; /* Un azul muy oscuro para mejor legibilidad */
+            font-family: 'Courier New', Courier, monospace;
+            color: #2c3e50; /* Un azul muy oscuro para mejor legibilidad */
         }
         #contenido-protegido {
             display: none; /* Oculto por defecto */
@@ -58,25 +59,29 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            
-            
             text-decoration: none;
-            background-color: #000080;
-            color: white;
+            
+            
+            background-color: #1a237e !important;
+            border: none !important;
+            backdrop-filter: blur(8px); /* Efecto de desenfoque del fondo */
+
+            color: white !important;
             padding: 20px; /*Para que el interior del texto no toque los bordes*/
-            border-radius: 8px; /*Bordes mas redondeados*/
+            border-radius: 15px; /*Bordes mas redondeados*/
+            border: 1px solid rgba(255, 255, 255, 0.2); /*Borde blanco semitransparente*/
+            
             line-height: 1.2; /*Quitar márgenes extras de los párrafos de dentro*/
-            margin: 0;
-            min-width: 100px;
+            min-width: 200px;
             text-align: center;
-            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra inicial */
         }
 
         .c1_1:hover, .c1_2:hover, .c1_3:hover, .c2_1:hover, .c2_2:hover, .c2_3:hover, .c3_1:hover, .c3_2:hover, .c3_3:hover, .c4_1:hover, .c4_2:hover, .c4_3:hover, .c5_1:hover, .c5_2:hover, .c5_3:hover, .c6_1:hover, .c6_2:hover, .c6_3:hover, .c7_1:hover, .c7_2:hover, .c7_3:hover,
         .c8_1:hover, .c8_2:hover, .c8_3:hover, .c9_1:hover, .c9_2:hover, .c9_3:hover, .c10_1:hover, .c10_2:hover, .c10_3:hover, .c11_1:hover, .c11_2:hover, .c11_3:hover, .c12_1:hover, .c12_2:hover, .c12_3:hover{
-            transform: scale(1.07);
-            z-index: 10;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.25);
         }
 
         .contenedor_1 a, .contenedor_2 a, .contenedor_3 a, .contenedor_4 a, .contenedor_5 a, .contenedor_6 a, .contenedor_7 a, .contenedor_8 a, .contenedor_9 a, .contenedor_10 a, .contenedor_11 a, .contenedor_12 a{
@@ -84,15 +89,17 @@
             text-decoration: none;
         }
         .menu-superior {
-            background-color: #000080; /* El azul marino de tus libros */
+            background-color: rgba(26, 35, 126, 0.9); /* El azul marino de tus libros */
+            backdrop-filter: blur(10px); /* Efecto de desenfoque del fondo */
             color: white;
             display: flex;             /* Alinea logo y links en horizontal */
             justify-content: space-between; 
             align-items: center;
-            padding: 10px 50px;
+            padding: 15px 50px;
             position: sticky;          /* ¡Mágico! Se queda pegado al bajar */
             top: 0;                    /* Posición en el borde superior */
             z-index: 1000;             /* Asegura que flote sobre los libros */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .menu-superior ul {
@@ -447,15 +454,24 @@
             </div>
         </div>
         <script>
-        const passwordCorrecta = "1234"; // Cambia esto por la contraseña que quieras
-        let intento = prompt("Introduce la contraseña para ver la biblioteca:");
+            const passwordCorrecta = "1234"; 
+            const contenido = document.getElementById('contenido-protegido');
 
-        if (intento === passwordCorrecta) {
-            document.getElementById('contenido-protegido').style.display = 'block';
-        } else {
-            alert("Contraseña incorrecta. Recarga la página para intentar de nuevo.");
-            window.location.reload(); 
-        }
-    </script>
+            // 1. Comprobamos si ya entró antes en esta sesión
+            if (sessionStorage.getItem('accesoPermitido') === 'true') {
+                contenido.style.display = 'block';
+            } else {
+                // 2. Si es la primera vez, pedimos la clave
+                let intento = prompt("Introduce la contraseña para ver la biblioteca:");
+
+                if (intento === passwordCorrecta) {
+                    sessionStorage.setItem('accesoPermitido', 'true'); // Guardamos el éxito
+                    contenido.style.display = 'block';
+                } else {
+                    alert("Contraseña incorrecta.");
+                    window.location.reload(); 
+                }
+            }
+        </script>
     </body>
 </html>
