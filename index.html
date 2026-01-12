@@ -579,6 +579,31 @@
 
                 document.querySelectorAll('.revelar').forEach(el => observer.observe(el));
             }
+            // Detectamos cuando el usuario vuelve a la página (atrás/adelante)
+            window.addEventListener('pageshow', function(event) {
+                // Si la página se carga desde el historial (BFCache)
+                if (event.persisted || performance.getEntriesByType("navigation")[0].type === 'back_forward') {
+                    
+                    // 1. Buscamos el libro que se quedó grande
+                    const libroGigante = document.querySelector('.abriendo-app');
+                    
+                    if (libroGigante) {
+                        // 2. Quitamos la clase de animación
+                        libroGigante.classList.remove('abriendo-app');
+                        
+                        // 3. Limpiamos todos los estilos que pusimos a mano
+                        libroGigante.style.position = '';
+                        libroGigante.style.top = '';
+                        libroGigante.style.left = '';
+                        libroGigante.style.width = '';
+                        libroGigante.style.height = '';
+                        libroGigante.style.margin = '';
+                        
+                        // 4. Devolvemos el scroll al cuerpo de la página
+                        document.body.style.overflow = 'auto';
+                    }
+                }
+            });
         </script>
     </body>
 </html>
