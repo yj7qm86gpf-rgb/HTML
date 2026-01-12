@@ -7,7 +7,18 @@
     </head>
     <style>
         body {
-            background-color: turquoise;
+            /* Degradado de turquesa a un azul más suave */
+            background: linear-gradient(135deg, #a7ffeb 0%, #e0f7fa 100%);
+            background-size: cover;
+            background-attachment: fixed;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+            color: #2c3e50; /* Un azul muy oscuro para mejor legibilidad */
+            overflow-x: hidden;
+        }
+        #contenido-protegido {
+            display: none; /* Oculto por defecto */
         }
         body {
             font-family: 'Courier New', Courier, monospace;
@@ -24,8 +35,17 @@
         .centrada {
             display: block;
             margin: auto;
+            border-radius: 20px; /* Bordes redondeados */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra suave */
+            border: 5px solid white; /* Marco blanco elegante */
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
         }
-        .contenedor_1, .contenedor_2, .contenedor_3, .contenedor_4, .contenedor_5{
+
+        .centrada:hover {
+            transform: scale(1.02); /* Pequeño efecto al pasar el ratón */
+        }
+        .contenedor_1, .contenedor_2, .contenedor_3, .contenedor_4, .contenedor_5, .contenedor_6, .contenedor_7, .contenedor_8, .contenedor_9, .contenedor_10, .contenedor_11, .contenedor_12{
             font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
             font-weight: bold;
             white-space: nowrap;
@@ -37,43 +57,52 @@
             font-size: 25px;
             width: 100%;
         }
-        .c1_1, .c1_2, .c1_3, .c2_1, .c2_2, .c2_3, .c3_1, .c3_2, .c3_3, .c4_1, .c4_2, .c4_3, .c5_1, .c5_2, .c5_3{
+        .c1_1, .c1_2, .c1_3, .c2_1, .c2_2, .c2_3, .c3_1, .c3_2, .c3_3, .c4_1, .c4_2, .c4_3, .c5_1, .c5_2, .c5_3, .c6_1, .c6_2, .c6_3, .c7_1, .c7_2, .c7_3, .c8_1, .c8_2, .c8_3, .c9_1, .c9_2, .c9_3, .c10_1, .c10_2, .c10_3,
+        .c11_1, .c11_2, .c11_3, .c12_1, .c12_2, .c12_3{
             display: flex;
             flex-direction: column;
             align-items: center;
-            
             text-decoration: none;
-            background-color: #000080;
-            color: white;
+            
+            
+            background-color: #1a237e !important;
+            border: none !important;
+            backdrop-filter: blur(8px); /* Efecto de desenfoque del fondo */
+
+            color: white !important;
             padding: 20px; /*Para que el interior del texto no toque los bordes*/
-            border-radius: 8px; /*Bordes mas redondeados*/
+            border-radius: 15px; /*Bordes mas redondeados*/
+            border: 1px solid rgba(255, 255, 255, 0.2); /*Borde blanco semitransparente*/
+            
             line-height: 1.2; /*Quitar márgenes extras de los párrafos de dentro*/
-            margin: 0;
-            min-width: 100px;
+            min-width: 200px;
             text-align: center;
-            transition: transform 0.2s ease-in-out, box-shadow 0.3s ease-in-out;
+            transition: all 0.3s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra inicial */
         }
 
-        .c1_1:hover, .c1_2:hover, .c1_3:hover, .c2_1:hover, .c2_2:hover, .c2_3:hover, .c3_1:hover, .c3_2:hover, .c3_3:hover, .c4_1:hover, .c4_2:hover, .c4_3:hover, .c5_1:hover, .c5_2:hover, .c5_3:hover{
-            transform: scale(1.07);
-            z-index: 10;
-            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+        .c1_1:hover, .c1_2:hover, .c1_3:hover, .c2_1:hover, .c2_2:hover, .c2_3:hover, .c3_1:hover, .c3_2:hover, .c3_3:hover, .c4_1:hover, .c4_2:hover, .c4_3:hover, .c5_1:hover, .c5_2:hover, .c5_3:hover, .c6_1:hover, .c6_2:hover, .c6_3:hover, .c7_1:hover, .c7_2:hover, .c7_3:hover,
+        .c8_1:hover, .c8_2:hover, .c8_3:hover, .c9_1:hover, .c9_2:hover, .c9_3:hover, .c10_1:hover, .c10_2:hover, .c10_3:hover, .c11_1:hover, .c11_2:hover, .c11_3:hover, .c12_1:hover, .c12_2:hover, .c12_3:hover{
+            transform: translateY(-5px);
+            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.25);
         }
 
-        .contenedor_1 a, .contenedor_2 a, .contenedor_3 a, .contenedor_4 a, .contenedor_5 a {
+        .contenedor_1 a, .contenedor_2 a, .contenedor_3 a, .contenedor_4 a, .contenedor_5 a, .contenedor_6 a, .contenedor_7 a, .contenedor_8 a, .contenedor_9 a, .contenedor_10 a, .contenedor_11 a, .contenedor_12 a{
             color: white !important; /* El !important asegura que gane a cualquier otro color */
             text-decoration: none;
         }
         .menu-superior {
-            background-color: #000080; /* El azul marino de tus libros */
+            background-color: rgba(26, 35, 126, 0.9); /* El azul marino de tus libros */
+            backdrop-filter: blur(10px); /* Efecto de desenfoque del fondo */
             color: white;
             display: flex;             /* Alinea logo y links en horizontal */
             justify-content: space-between; 
             align-items: center;
-            padding: 10px 50px;
+            padding: 15px 50px;
             position: sticky;          /* ¡Mágico! Se queda pegado al bajar */
             top: 0;                    /* Posición en el borde superior */
             z-index: 1000;             /* Asegura que flote sobre los libros */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .menu-superior ul {
@@ -88,82 +117,38 @@
             text-decoration: none;     /* Quita el subrayado */
             font-weight: bold;
         }
-        .barra-musica {
-            position: fixed;
-            bottom: -100px; /* Escondida debajo de la pantalla */
-            left: 0;
-            width: 100%;
-            background-color: #000080;
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 30px;
-            padding: 15px 0;
-            box-shadow: 0 -5px 15px rgba(0,0,0,0.3);
-            z-index: 2000;
-            transition: bottom 0.5s ease; /* Animación de subida */
-        }
-
-        /* Clase que activaremos con JavaScript */
-        .barra-musica.activa {
-            bottom: 0;
-        }
-
-        /* Personalizamos el reproductor para que no sea gris feo */
-        #reproductor-audio {
-            width: 60%;
-            height: 35px;
-            filter: invert(100%) hue-rotate(180deg) brightness(1.5);
-        }
-
-        .info-cancion {
-            font-size: 16px;
-        }
-
-        .boton-cerrar {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            margin-right: 20px;
-        }
-        /* DISEÑO PARA MÓVILES */
         @media (max-width: 800px) {
-            /* Ajustamos la imagen de Taylor leyendo */
-            .centrada {
-                width: 80% !important;   /* Reduce el tamaño al 80% del ancho del móvil */
-                max-width: 280px !important; /* Límite para que no se vea gigante */
-                height: auto !important;
+            body {
+                background-attachment: fixed;
+            }
+            
+            /* 1. Cambiamos las filas de 3 libros por una columna vertical */
+            [class^="contenedor_"] {
+                flex-direction: column !important;
+                align-items: center !important;
+                gap: 40px !important; /* Espacio entre libros hacia abajo */
+                white-space: normal !important; /* Permite que el texto largo salte de línea */
             }
 
-            /* Títulos y textos más pequeños */
+            /* 2. Ajustamos el ancho de las cajas azules */
+            [class*="c1_"], [class*="c2_"], [class*="c3_"], [class*="c4_"], 
+            [class*="c5_"], [class*="c6_"], [class*="c7_"], [class*="c8_"], 
+            [class*="c9_"], [class*="c10_"], [class*="c11_"], [class*="c12_"] {
+                width: 90% !important;
+                max-width: 300px !important;
+                min-width: unset !important;
+            }
+
+            /* 3. Reducimos el tamaño de las letras para que quepan bien */
             h1 {
-                font-size: 26px !important;
-                padding: 0 10px;
+                font-size: 28px !important;
             }
 
             .contenedor_0 {
                 font-size: 18px !important;
-                padding: 0 15px;
             }
 
-            /* Los discos se ponen uno debajo de otro */
-            .contenedor_1, .contenedor_2, .contenedor_3, .contenedor_4, .contenedor_5 {
-                flex-direction: column !important;
-                align-items: center !important;
-                gap: 30px !important;
-                white-space: normal !important; /* Permite que el nombre de la canción use 2 líneas */
-            }
-
-            /* Ajuste de las cajas de canciones */
-            .c1_1 {
-                width: 85% !important;
-                min-width: unset !important;
-            }
-
-            /* Menú superior en columna */
+            /* 4. Adaptamos el menú superior */
             .menu-superior {
                 flex-direction: column !important;
                 padding: 10px !important;
@@ -174,19 +159,97 @@
                 padding: 0 !important;
                 gap: 15px !important;
             }
+            @media (max-width: 800px) {
 
-            /* IMPORTANTE: Barra de música en el móvil */
-            .barra-musica {
-                flex-direction: column !important; /* Info arriba, controles abajo */
-                height: auto !important;
-                padding: 10px 5px !important;
-                gap: 10px !important;
-            }
-
-            #reproductor-audio {
-                width: 90% !important; /* El reproductor ocupa casi todo el ancho */
+            .centrada {
+                width: 60% !important;   /* Ocupará solo el 60% del ancho del móvil */
+                max-width: 250px !important; /* Nunca medirá más de 250px para no verse gigante */
+                height: auto !important; /* Mantiene la proporción para que no se estire */
             }
         }
+        }
+        @keyframes entradaSuave {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Estado inicial: oculto y un poco hacia abajo */
+        .revelar {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out; /* Controla la suavidad */
+        }
+
+        /* Estado final: visible y en su posición original */
+        .revelar.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* BORDE BLANCO PARA LAS PORTADAS DE LOS LIBROS */
+        [class^="contenedor_"] img {
+            border: 8px solid white !important; /* El borde blanco grueso */
+            border-radius: 10px !important;    /* Esquinas un poco redondeadas */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important; /* Sombra para que resalte sobre el azul */
+            margin-bottom: 15px !important;    /* Espacio entre la foto y el título */
+            transition: transform 0.3s ease !important; /* Suavidad al pasar el ratón */
+        }
+
+        /* Efecto opcional: el libro se agranda un poco al pasar el ratón */
+        [class^="contenedor_"] a:hover img {
+            transform: scale(1.05); /* El libro crece ligeramente */
+        }
+        /* DISEÑO DEL REPRODUCTOR DE MÚSICA */
+        .barra-musica {
+            position: fixed;
+            bottom: -100px; /* Escondida por defecto abajo */
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 600px;
+            background-color: rgba(26, 35, 126, 0.9); /* Azul marino translúcido */
+            backdrop-filter: blur(10px); /* Efecto cristal */
+            padding: 15px 25px;
+            border-radius: 20px 20px 0 0; /* Bordes redondeados arriba */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación de subida */
+            z-index: 2000;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Clase que se activa al pulsar el disco */
+        .barra-musica.activa {
+            bottom: 0; /* Sube la barra */
+        }
+
+        .info-cancion {
+            color: white;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        /* Estilo para el reproductor de audio nativo */
+        audio {
+            width: 100%;
+            height: 35px;
+            filter: invert(100%) hue-rotate(180deg) brightness(1.5); /* Lo hace blanco/azulado */
+        }
+
+        .boton-cerrar {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0.7;
+        }
+
+        .boton-cerrar:hover { opacity: 1; }
     </style>
    
     <body>
@@ -226,6 +289,12 @@
             <button onclick="cerrarReproductor()" class="boton-cerrar">✕</button>
         </div>
         <script>
+            // Comprobamos si el usuario viene de validar la contraseña en el index
+            if (sessionStorage.getItem('accesoPermitido') !== 'true') {
+                // Si no tiene el "permiso", lo mandamos de vuelta al index
+                window.location.href = "index.html"; 
+            }
+
             const botonDisco = document.getElementById('activar-musica');
             const barra = document.getElementById('barra-reproductor');
             const audio = document.getElementById('reproductor-audio');

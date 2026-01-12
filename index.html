@@ -10,6 +10,7 @@
             /* Degradado de turquesa a un azul más suave */
             background: linear-gradient(135deg, #a7ffeb 0%, #e0f7fa 100%);
             background-size: cover;
+            background-attachment: fixed;
             min-height: 100vh;
             margin: 0;
             font-family: 'Courier New', Courier, monospace;
@@ -116,7 +117,29 @@
             text-decoration: none;     /* Quita el subrayado */
             font-weight: bold;
         }
+        /* EFECTO APERTURA ESTILO IPHONE */
+        .abriendo-app {
+            position: fixed !important;
+            z-index: 9999 !important; /* Se queda por encima de todo */
+            pointer-events: none;
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            
+            /* Se mueve al centro y se expande masivamente */
+            top: 50% !important;
+            left: 50% !important;
+            transform: translate(-50%, -50%) scale(12) !important; 
+            opacity: 0;
+            margin: 0 !important;
+        }
+        /* Aseguramos que el contenedor padre no corte la expansión */
+        [class^="contenedor_"] {
+            perspective: 1000px; /* Da profundidad 3D al efecto */
+        }
         @media (max-width: 800px) {
+            body {
+                background-attachment: fixed;
+            }
+            
             /* 1. Cambiamos las filas de 3 libros por una columna vertical */
             [class^="contenedor_"] {
                 flex-direction: column !important;
@@ -167,9 +190,30 @@
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
+        /* Estado inicial: oculto y un poco hacia abajo */
+        .revelar {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out; /* Controla la suavidad */
+        }
 
-        .contenedor_0, .contenedor_1, .contenedor_2, .contenedor_3 {
-            animation: entradaSuave 1s ease-out forwards; /* Efecto de entrada */
+        /* Estado final: visible y en su posición original */
+        .revelar.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* BORDE BLANCO PARA LAS PORTADAS DE LOS LIBROS */
+        [class^="contenedor_"] img {
+            border: 8px solid white !important; /* El borde blanco grueso */
+            border-radius: 10px !important;    /* Esquinas un poco redondeadas */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important; /* Sombra para que resalte sobre el azul */
+            margin-bottom: 15px !important;    /* Espacio entre la foto y el título */
+            transition: transform 0.3s ease !important; /* Suavidad al pasar el ratón */
+        }
+
+        /* Efecto opcional: el libro se agranda un poco al pasar el ratón */
+        [class^="contenedor_"] a:hover img {
+            transform: scale(1.05); /* El libro crece ligeramente */
         }
     </style>
    
@@ -192,7 +236,7 @@
             </div>
 
 
-            <div class="contenedor_1">
+            <div class="contenedor_1 revelar">
                 <p class="c1_1">
                     <a href="archivos y fotos/Powerless_1.pdf" class="c1_1">
                         <img src="archivos y fotos/Powerless.jpg" class="Powerless_1" width="225"><br>
@@ -214,7 +258,7 @@
             </div>
 
 
-            <div class="contenedor_2">
+            <div class="contenedor_2 revelar">
                 <p class="c2_1">
                     <a href="archivos y fotos/Fearless_3.pdf" class="c2_1">
                         <img src="archivos y fotos/Fearless.jpeg" class="Fearless_3" width="225"><br>
@@ -236,7 +280,7 @@
             </div>
 
 
-            <div class="contenedor_3">
+            <div class="contenedor_3 revelar">
                 <p class="c3_1">
                     <a href="archivos y fotos/Una Corte de Niebla y Furia - Sarah J. Maas.pdf" class="c3_1">
                         <img src="archivos y fotos/Un corte de niebla y furia.jpg" class="Una_Corte_De_Niebla_Y_Furia_2" width="225"><br>
@@ -258,7 +302,7 @@
             </div>
 
 
-            <div class="contenedor_4">
+            <div class="contenedor_4 revelar">
                 <p class="c4_1">
                     <a href="archivos y fotos/Una Corte de Llamas Plateadas - Sarah J. Maas.pdf" class="c4_1">
                         <img src="archivos y fotos/Un corte de llamas plateadas.webp" class="Una_Corte_De_Llamas_Plateadas_5" width="225"><br>
@@ -280,9 +324,9 @@
             </div>
 
 
-            <div class="contenedor_5">
+            <div class="contenedor_5 revelar">
                 <p class="c5_1">
-                    <a href="archivos y fotos/Enciéndeme - Tahereh Mafi.pdf" class="c5_1">
+                    <a href="archivos y fotos/Enciéndeme - Tahereh Mafi.pdf" class="c5_1">
                         <img src="archivos y fotos/Ignite me.jpg" class="Ignite_Me_3" width="225"><br>
                         Ignite me
                     </a>
@@ -302,7 +346,7 @@
             </div>
 
 
-            <div class="contenedor_6">
+            <div class="contenedor_6 revelar">
                 <p class="c6_1">
                     <a href="archivos y fotos/Imagine Me Tahereh Mafi.pdf" class="c6_1">
                         <img src="archivos y fotos/Imagine me.jpg" class="Imagine_Me_6" width="225"><br>
@@ -324,7 +368,7 @@
             </div>
 
 
-            <div class="contenedor_7">
+            <div class="contenedor_7 revelar">
                 <p class="c7_1">
                     <a href="archivos y fotos/Shadow Me - Shatter Me Series.pdf" class="c7_1">
                         <img src="archivos y fotos/Shadow me.jpg" class="Shadow_Me_4_5" width="225"><br>
@@ -346,7 +390,7 @@
             </div>
 
 
-            <div class="contenedor_8">
+            <div class="contenedor_8 revelar">
                 <p class="c8_1">
                     <a href="archivos y fotos/Binding 13 - Chloe Walsh.pdf" class="c8_1">
                         <img src="archivos y fotos/Binding 13.jpg" class="Binding_13" width="225"><br>
@@ -368,7 +412,7 @@
             </div>
 
 
-            <div class="contenedor_9">
+            <div class="contenedor_9 revelar">
                 <p class="c9_1">
                     <a href="https://es.scribd.com/document/761539569/Redeeming-6" class="c9_1">
                         <img src="archivos y fotos/Redeeming 6.avif" class="Redeeming_6" width="225"><br>
@@ -390,7 +434,7 @@
             </div>
 
 
-            <div class="contenedor_10">
+            <div class="contenedor_10 revelar">
                 <p class="c10_1">
                     <a href="archivos y fotos/Los siete maridos de Evelyn Hugo.pdf" class="c10_1">
                         <img src="archivos y fotos/Los siete maridos de Evelyn Hugo.jpg" class="Los_Siete_Maridos_De_Evelyn_Hugo" width="225"><br>
@@ -412,7 +456,7 @@
             </div>
 
 
-            <div class="contenedor_11">
+            <div class="contenedor_11 revelar">
                 <p class="c11_1">
                     <a href="archivos y fotos/Bad Ash Alina Not.pdf" class="c11_1">
                         <img src="archivos y fotos/Saltan chispas.jpg" class="Bad_Ash" width="225"><br>
@@ -434,7 +478,7 @@
             </div>
 
 
-            <div class="contenedor_12">
+            <div class="contenedor_12 revelar">
                 <p class="c12_1">
                     <a href="archivos y fotos/bad ash suelo sagrado.pdf" class="c12_1">
                         <img src="archivos y fotos/Bad ash suelo sagrado.jpg" class="Bad_Ash_Suelo_Sagrado" width="225"><br>
@@ -459,20 +503,63 @@
             const passwordCorrecta = "1234"; 
             const contenido = document.getElementById('contenido-protegido');
 
-            // 1. Comprobamos si ya entró antes en esta sesión
+            // Configuración del observador de scroll
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible'); // Activa la animación
+                    }
+                });
+            }, { threshold: 0.1 }); // Se activa cuando el 10% del elemento es visible
+
+            // Lógica de acceso y activación
             if (sessionStorage.getItem('accesoPermitido') === 'true') {
                 contenido.style.display = 'block';
+                iniciarAnimacion();
             } else {
-                // 2. Si es la primera vez, pedimos la clave
                 let intento = prompt("Introduce la contraseña para ver la biblioteca:");
-
                 if (intento === passwordCorrecta) {
-                    sessionStorage.setItem('accesoPermitido', 'true'); // Guardamos el éxito
+                    sessionStorage.setItem('accesoPermitido', 'true');
                     contenido.style.display = 'block';
+                    iniciarAnimacion();
                 } else {
                     alert("Contraseña incorrecta.");
                     window.location.reload(); 
                 }
+            }
+
+            // Función para empezar a vigilar el scroll
+            function iniciarAnimacion() {
+            // 1. Seleccionamos los enlaces <a> que contienen los libros
+            const enlacesLibros = document.querySelectorAll('.revelar a');
+
+            enlacesLibros.forEach(enlace => {
+                enlace.addEventListener('click', function(e) {
+                    // Obtenemos la URL del PDF
+                    const url = this.getAttribute('href');
+
+                    if (url) {
+                        e.preventDefault(); // Evitamos que se abra el PDF de inmediato
+
+                        // 2. ¡EL TRUCO! Buscamos al elemento padre (<p>), que es el que tiene el fondo azul
+                        const tarjetaLibro = this.parentElement;
+
+                        // Aseguramos que es el elemento correcto antes de animar
+                        if (tarjetaLibro && tarjetaLibro.tagName === 'P') {
+                            // 3. Aplicamos la clase de animación a LA TARJETA COMPLETA
+                            tarjetaLibro.classList.add('abriendo-app');
+
+                            // 4. Esperamos 500ms a que termine la animación y vamos al PDF
+                            setTimeout(() => {
+                                window.location.href = url;
+                            }, 500);
+                        }
+                    }
+                });
+            });
+
+            // Mantenemos el observador de scroll para que los libros aparezcan al bajar
+            document.querySelectorAll('.revelar').forEach(el => observer.observe(el));
             }
         </script>
     </body>
