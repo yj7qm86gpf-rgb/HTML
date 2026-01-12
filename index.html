@@ -9,10 +9,12 @@
         body {
             /* Degradado de turquesa a un azul más suave */
             background: linear-gradient(135deg, #a7ffeb 0%, #e0f7fa 100%);
-            background-attachment: fixed; /* El fondo no se mueve al hacer scroll */
+            background-size: cover;
+            min-height: 100vh;
             margin: 0;
             font-family: 'Courier New', Courier, monospace;
             color: #2c3e50; /* Un azul muy oscuro para mejor legibilidad */
+            overflow-x: hidden;
         }
         #contenido-protegido {
             display: none; /* Oculto por defecto */
