@@ -3,261 +3,205 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>La biblioteca de mi novia</title>
+        <title>La biblioteca de mi novia - Canciones</title>
+        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     </head>
     <style>
+        /* --- 1. BASE Y FONDO --- */
         body {
             margin: 0;
-            font-family: 'Courier New', Courier, monospace;
-            color: #2c3e50;
+            font-family: 'Poppins', sans-serif;
+            color: #1e293b;
             overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* El fondo ahora es una capa independiente */
         body::before {
             content: "";
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             background: linear-gradient(135deg, #a7ffeb 0%, #e0f7fa 100%);
-            background-size: cover;
             z-index: -1;
-            will-change: transform;
         }
 
-        #contenido-protegido {
-            display: none;
-        }
+        /* --- 2. CABECERA Y TEXTOS --- */
         h1 {
             text-align: center;
-            font-size: 40px;
+            font-family: 'Dancing Script', cursive;
+            font-size: clamp(30px, 6vw, 50px);
+            margin: 40px 0;
+            color: #1a237e;
+            font-weight: 800;
         }
+
         .contenedor_0 {
             text-align: center;
-            font-size: 25px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            font-size: 18px;
+            color: #1e293b !important; /* TEXTO EN NEGRO PARA CONTRASTE */
+            line-height: 1.6;
             font-weight: bold;
         }
+
         .centrada {
             display: block;
             margin: auto;
-            border-radius: 20px; /* Bordes redondeados */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* Sombra suave */
-            border: 5px solid white; /* Marco blanco elegante */
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 6px solid white;
             margin-bottom: 30px;
-            transition: transform 0.3s ease;
+            max-width: 90%;
         }
 
-        .centrada:hover {
-            transform: scale(1.02); /* Pequeño efecto al pasar el ratón */
-        }
-        .contenedor_1, .contenedor_2, .contenedor_3, .contenedor_4, .contenedor_5, .contenedor_6, .contenedor_7, .contenedor_8, .contenedor_9, .contenedor_10, .contenedor_11, .contenedor_12{
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-            font-weight: bold;
-            white-space: nowrap;
+        /* --- 3. TARJETAS DE CANCIONES (Estilo Libros) --- */
+        .contenedor_1 {
             display: flex;
+            flex-wrap: wrap; 
             justify-content: center;
-            align-items: flex-start;
-            gap: 175px;
-            margin-top: 30px;
-            font-size: 25px;
+            gap: 35px;
+            padding: 20px;
+            margin-top: 20px;
             width: 100%;
+            box-sizing: border-box;
         }
-        .c1_1, .c1_2, .c1_3, .c2_1, .c2_2, .c2_3, .c3_1, .c3_2, .c3_3, .c4_1, .c4_2, .c4_3, .c5_1, .c5_2, .c5_3, .c6_1, .c6_2, .c6_3, .c7_1, .c7_2, .c7_3, .c8_1, .c8_2, .c8_3, .c9_1, .c9_2, .c9_3, .c10_1, .c10_2, .c10_3,
-        .c11_1, .c11_2, .c11_3, .c12_1, .c12_2, .c12_3{
+
+        [class*="c1_"] {
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-decoration: none;
-            
-            
-            background-color: #1a237e !important;
-            border: none !important;
-            backdrop-filter: blur(8px); /* Efecto de desenfoque del fondo */
-
-            color: white !important;
-            padding: 20px; /*Para que el interior del texto no toque los bordes*/
-            border-radius: 15px; /*Bordes mas redondeados*/
-            border: 1px solid rgba(255, 255, 255, 0.2); /*Borde blanco semitransparente*/
-            
-            line-height: 1.2; /*Quitar márgenes extras de los párrafos de dentro*/
-            min-width: 200px;
+            padding: 25px;
+            width: 260px;
+            background: rgba(26, 35, 126, 0.9) !important; 
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 25px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            transition: all 0.4s ease;
+            cursor: pointer;
             text-align: center;
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Sombra inicial */
+            box-sizing: border-box;
+            color: white !important;
+            font-weight: 600;
+            font-size: 17px;
         }
 
-        .c1_1:hover, .c1_2:hover, .c1_3:hover, .c2_1:hover, .c2_2:hover, .c2_3:hover, .c3_1:hover, .c3_2:hover, .c3_3:hover, .c4_1:hover, .c4_2:hover, .c4_3:hover, .c5_1:hover, .c5_2:hover, .c5_3:hover, .c6_1:hover, .c6_2:hover, .c6_3:hover, .c7_1:hover, .c7_2:hover, .c7_3:hover,
-        .c8_1:hover, .c8_2:hover, .c8_3:hover, .c9_1:hover, .c9_2:hover, .c9_3:hover, .c10_1:hover, .c10_2:hover, .c10_3:hover, .c11_1:hover, .c11_2:hover, .c11_3:hover, .c12_1:hover, .c12_2:hover, .c12_3:hover{
-            transform: translateY(-5px);
-            box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.25);
+        [class*="c1_"]:hover {
+            transform: translateY(-10px);
+            background: rgba(26, 35, 126, 1) !important; 
+            box-shadow: 0 15px 40px rgba(26, 35, 126, 0.4);
         }
 
-        .contenedor_1 a, .contenedor_2 a, .contenedor_3 a, .contenedor_4 a, .contenedor_5 a, .contenedor_6 a, .contenedor_7 a, .contenedor_8 a, .contenedor_9 a, .contenedor_10 a, .contenedor_11 a, .contenedor_12 a{
-            color: white !important; /* El !important asegura que gane a cualquier otro color */
-            text-decoration: none;
+        /* Imágenes de las canciones (Estilo Portada) */
+        .contenedor_1 img {
+            width: 100%;
+            height: auto;
+            border: 5px solid white !important;
+            border-radius: 12px !important;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important;
+            margin-bottom: 15px;
         }
+
+        /* --- 4. MENÚ SUPERIOR --- */
         .menu-superior {
-            background-color: rgba(26, 35, 126, 0.9); /* El azul marino de tus libros */
-            backdrop-filter: blur(10px); /* Efecto de desenfoque del fondo */
+            background: rgba(26, 35, 126, 0.95);
+            backdrop-filter: blur(10px);
             color: white;
-            display: flex;             /* Alinea logo y links en horizontal */
-            justify-content: space-between; 
+            display: flex;
+            justify-content: space-between;
             align-items: center;
-            padding: 15px 50px;
-            position: sticky;          /* ¡Mágico! Se queda pegado al bajar */
-            top: 0;                    /* Posición en el borde superior */
-            z-index: 1000;             /* Asegura que flote sobre los libros */
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 12px 50px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .menu-superior .logo {
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
         }
 
         .menu-superior ul {
             display: flex;
-            gap: 30px;                 /* Espacio entre los enlaces */
-            list-style: none;          /* Quita los puntos de la lista */
+            gap: 25px;
+            list-style: none;
             margin: 0;
+            padding: 0;
         }
 
         .menu-superior a {
             color: white;
-            text-decoration: none;     /* Quita el subrayado */
-            font-weight: bold;
-        }
-        @media (max-width: 800px) {
-            body {
-                background-attachment: fixed;
-            }
-            
-            /* 1. Cambiamos las filas de 3 libros por una columna vertical */
-            [class^="contenedor_"] {
-                flex-direction: column !important;
-                align-items: center !important;
-                gap: 40px !important; /* Espacio entre libros hacia abajo */
-                white-space: normal !important; /* Permite que el texto largo salte de línea */
-            }
-
-            /* 2. Ajustamos el ancho de las cajas azules */
-            [class*="c1_"], [class*="c2_"], [class*="c3_"], [class*="c4_"], 
-            [class*="c5_"], [class*="c6_"], [class*="c7_"], [class*="c8_"], 
-            [class*="c9_"], [class*="c10_"], [class*="c11_"], [class*="c12_"] {
-                width: 90% !important;
-                max-width: 300px !important;
-                min-width: unset !important;
-            }
-
-            /* 3. Reducimos el tamaño de las letras para que quepan bien */
-            h1 {
-                font-size: 28px !important;
-            }
-
-            .contenedor_0 {
-                font-size: 18px !important;
-            }
-
-            /* 4. Adaptamos el menú superior */
-            .menu-superior {
-                flex-direction: column !important;
-                padding: 10px !important;
-                gap: 10px !important;
-            }
-
-            .menu-superior ul {
-                padding: 0 !important;
-                gap: 15px !important;
-            }
-            @media (max-width: 800px) {
-
-            .centrada {
-                width: 60% !important;   /* Ocupará solo el 60% del ancho del móvil */
-                max-width: 250px !important; /* Nunca medirá más de 250px para no verse gigante */
-                height: auto !important; /* Mantiene la proporción para que no se estire */
-            }
-        }
-        }
-        @keyframes entradaSuave {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        /* Estado inicial: oculto y un poco hacia abajo */
-        .revelar {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease-out; /* Controla la suavidad */
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 14px;
         }
 
-        /* Estado final: visible y en su posición original */
-        .revelar.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        /* BORDE BLANCO PARA LAS PORTADAS DE LOS LIBROS */
-        [class^="contenedor_"] img {
-            border: 8px solid white !important; /* El borde blanco grueso */
-            border-radius: 10px !important;    /* Esquinas un poco redondeadas */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3) !important; /* Sombra para que resalte sobre el azul */
-            margin-bottom: 15px !important;    /* Espacio entre la foto y el título */
-            transition: transform 0.3s ease !important; /* Suavidad al pasar el ratón */
-        }
-
-        /* Efecto opcional: el libro se agranda un poco al pasar el ratón */
-        [class^="contenedor_"] a:hover img {
-            transform: scale(1.05); /* El libro crece ligeramente */
-        }
-        /* DISEÑO DEL REPRODUCTOR DE MÚSICA */
+        /* --- 5. REPRODUCTOR DE MÚSICA SMOOTH --- */
         .barra-musica {
             position: fixed;
-            bottom: -100px; /* Escondida por defecto abajo */
+            bottom: -150px;
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
-            max-width: 600px;
-            background-color: rgba(26, 35, 126, 0.9); /* Azul marino translúcido */
-            backdrop-filter: blur(10px); /* Efecto cristal */
-            padding: 15px 25px;
-            border-radius: 20px 20px 0 0; /* Bordes redondeados arriba */
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            transition: bottom 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Animación de subida */
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 25px 25px 0 0;
+            box-shadow: 0 -10px 30px rgba(0,0,0,0.1);
+            transition: bottom 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             z-index: 2000;
-            box-shadow: 0 -5px 20px rgba(0,0,0,0.2);
+            border: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* Clase que se activa al pulsar el disco */
         .barra-musica.activa {
-            bottom: 0; /* Sube la barra */
+            bottom: 0;
         }
 
         .info-cancion {
-            color: white;
+            color: #1a237e;
+            font-weight: bold;
             font-size: 16px;
             text-align: center;
+            margin-bottom: 10px;
         }
 
-        /* Estilo para el reproductor de audio nativo */
         audio {
             width: 100%;
-            height: 35px;
-            filter: invert(100%) hue-rotate(180deg) brightness(1.5); /* Lo hace blanco/azulado */
+            height: 40px;
+            filter: hue-rotate(180deg); /* Ajusta el color del reproductor nativo */
         }
 
         .boton-cerrar {
             position: absolute;
             top: 10px;
             right: 15px;
-            background: none;
+            background: #1a237e;
             border: none;
             color: white;
-            font-size: 20px;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
             cursor: pointer;
-            opacity: 0.7;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
         }
 
-        .boton-cerrar:hover { opacity: 1; }
+        /* --- 6. AJUSTE MÓVIL --- */
+        @media (max-width: 700px) {
+            .menu-superior { padding: 15px; flex-direction: column; gap: 10px; }
+            .contenedor_1 { flex-direction: column; align-items: center; }
+            [class*="c1_"] { width: 90% !important; max-width: 300px; }
+        }
     </style>
    
     <body>
@@ -269,39 +213,39 @@
                 <li><a href="Créditos.html">Créditos</a></li>
             </ul>
         </nav>
-        <h1>TU PÁGINA DE PELÍCULAS (Hecha por tu novio también)</h1>
-        <p><img src="archivos y fotos/taylor peli.jpeg"" alt="Imagen" class="centrada"></p>
+
+        <h1>TUS CANCIONES (Adrian's Version) ❤️</h1>
+        
+        <p><img src="archivos y fotos/taylor peli.jpeg" alt="Imagen" class="centrada"></p>
+        
         <div class="contenedor_0">
-            <p class="c0_1">Aquí encontrarás todas las Canciones que vaya haciendo para ti, de momento solo he hecho la que te pasé pero eso ni significa que no vaya a hacerte más... (guiño guiño)</p>
-            <p class="c0_2">Espero que te guste este pequeño regalo :).</p>
-            <p class="c0_3">(Hecho con amor para ti <3)</p>
+            <p>Aquí encontrarás todas las canciones que vaya haciendo para ti.</p>
+            <p>Espero que te guste este pequeño regalo hecho con mucho amor. <span style="color: #e91e63;">❤</span></p>
         </div>
 
-
        <div class="contenedor_1">
-            <div class="c1_1" onclick="prepararMusica('archivos y fotos/Invisible string (Adrian\'s version) [tgVUi1gl29k].mp3', 'Invisible String (Adrian\'s version)')" style="cursor: pointer;">
-                <img src="archivos y fotos/Cubierta Adrian.webp" class="Invisible_String" width="225"><br>
+            <div class="c1_1" onclick="prepararMusica('archivos y fotos/Invisible string (Adrian\'s version) [tgVUi1gl29k].mp3', 'Invisible String (Adrian\'s version)')">
+                <img src="archivos y fotos/Cubierta Adrian.webp" class="Invisible_String">
                 Invisible String (Adrian's version)
             </div>
             
-            <div class="c1_2" onclick="prepararMusica('archivos y fotos/The Archer Instrumental - Taylor Swift.mp3', 'The Archer (Adrian\'s version)')" style="cursor: pointer;">
-                <img src="archivos y fotos/Portada The Archer.webp" class="The_Archer" width="225"><br>
+            <div class="c1_2" onclick="prepararMusica('archivos y fotos/The Archer Instrumental - Taylor Swift.mp3', 'The Archer (Adrian\'s version)')">
+                <img src="archivos y fotos/Portada The Archer.webp" class="The_Archer">
                 The Archer (Adrian's version)
             </div>
         </div>
         
         <div id="barra-reproductor" class="barra-musica">
+            <button onclick="cerrarReproductor()" class="boton-cerrar">✕</button>
             <div class="info-cancion">
-                <strong>Sonando ahora:</strong> <span id="titulo-cancion">---</span>
+                Sonando: <span id="titulo-cancion">---</span>
             </div>
-            
             <audio id="reproductor-audio" controls>
                 <source id="audio-source" src="" type="audio/mpeg">
                 Tu navegador no soporta audio.
             </audio>
-
-            <button onclick="cerrarReproductor()" class="boton-cerrar">✕</button>
         </div>
+
         <script>
             // Verificación de acceso
             if (sessionStorage.getItem('accesoPermitido') !== 'true') {
@@ -313,13 +257,8 @@
             const titulo = document.getElementById('titulo-cancion');
 
             function prepararMusica(archivo, nombre) {
-                // 1. Cambiamos el título
                 titulo.innerText = nombre;
-                
-                // 2. Cambiamos la fuente del audio
                 audio.src = archivo;
-                
-                // 3. Cargamos y reproducimos
                 audio.load();
                 barra.classList.add('activa');
                 audio.play();
