@@ -195,6 +195,19 @@
             .menu-superior { padding: 15px; flex-direction: column; gap: 12px; }
             [class^="contenedor_"]:not(.contenedor_0) { flex-direction: column; align-items: center; }
             [class*="c"] { width: 90% !important; max-width: 300px; }
+
+            .modal-contenido {
+                width: 95% !important;
+                height: 85vh !important; /* Forzamos la altura en el móvil */
+                margin: 10% auto !important;
+                -webkit-overflow-scrolling: touch; /* Mejora el scroll en iPhone */
+            }
+
+            #visor-pdf {
+                width: 100% !important;
+                height: 100% !important;
+                border: none;
+            }
         }
 
         /* Animación Reveal Scroll */
@@ -412,118 +425,69 @@
             </div>
         </div>
         <script>
-            const passwordCorrecta = "1234"; 
-            const contenido = document.getElementById('contenido-protegido');
+            // --- LÓGICA DE ACCESO Y CONTRASEÑA ---
+        const passwordCorrecta = "1234"; 
+        const contenido = document.getElementById('contenido-protegido');
 
-            // Configuración del observador de scroll
+        if (sessionStorage.getItem('accesoPermitido') === 'true') {
+            contenido.style.display = 'block';
+            iniciarFunciones();
+        } else {
+            let intento = prompt("Introduce la contraseña para ver la biblioteca:");
+            if (intento === passwordCorrecta) {
+                sessionStorage.setItem('accesoPermitido', 'true');
+                contenido.style.display = 'block';
+                iniciarFunciones();
+            } else {
+                alert("Contraseña incorrecta.");
+                window.location.reload(); 
+            }
+        }
+
+        // --- FUNCIÓN PARA ACTIVAR ANIMACIONES AL BAJAR (SCROLL) ---
+        function iniciarFunciones() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
-                        entry.target.classList.add('visible'); // Activa la animación
+                        entry.target.classList.add('visible'); 
                     }
                 });
-            }, { threshold: 0.1 }); // Se activa cuando el 10% del elemento es visible
+            }, { threshold: 0.1 });
 
-            // Lógica de acceso y activación
-            if (sessionStorage.getItem('accesoPermitido') === 'true') {
-                contenido.style.display = 'block';
-                iniciarAnimacion();
-            } else {
-                let intento = prompt("Introduce la contraseña para ver la biblioteca:");
-                if (intento === passwordCorrecta) {
-                    sessionStorage.setItem('accesoPermitido', 'true');
-                    contenido.style.display = 'block';
-                    iniciarAnimacion();
-                } else {
-                    alert("Contraseña incorrecta.");
-                    window.location.reload(); 
-                }
-            }
+            document.querySelectorAll('.revelar').forEach(el => observer.observe(el));
+        }
 
-            // Función para empezar a vigilar el scroll
-            function iniciarAnimacion() {
-                const enlacesLibros = document.querySelectorAll('.revelar a');
-
-                enlacesLibros.forEach(enlace => {
-                    enlace.addEventListener('click', function(e) {
-                        const url = this.getAttribute('href');
-
-                        if (url) {
-                            e.preventDefault();
-                            const tarjetaLibro = this.parentElement; 
-                            
-                            // 1. Obtenemos la posición donde está el libro ahora mismo
-                            const rect = tarjetaLibro.getBoundingClientRect();
-
-                            // 2. Lo "congelamos" en esa posición antes de moverlo
-                            tarjetaLibro.style.top = rect.top + 'px';
-                            tarjetaLibro.style.left = rect.left + 'px';
-                            tarjetaLibro.style.width = rect.width + 'px';
-                            tarjetaLibro.style.height = rect.height + 'px';
-                            tarjetaLibro.style.position = 'fixed';
-                            tarjetaLibro.style.margin = '0';
-
-                            // Forzamos al navegador a entender el cambio
-                            tarjetaLibro.offsetHeight; 
-
-                            // 3. Disparamos la animación hacia el centro
-                            tarjetaLibro.classList.add('abriendo-app');
-
-                            // 4. Vamos al PDF cuando la pantalla ya esté toda azul
-                            setTimeout(() => {
-                                window.location.href = url;
-                            }, 700); 
-                        }
-                    });
-                });
-
-                document.querySelectorAll('.revelar').forEach(el => observer.observe(el));
-            }
-            // Detectamos cuando el usuario vuelve a la página (atrás/adelante)
-            window.addEventListener('pageshow', function(event) {
-                // Si la página se carga desde el historial (BFCache)
-                if (event.persisted || performance.getEntriesByType("navigation")[0].type === 'back_forward') {
-                    
-                    // 1. Buscamos el libro que se quedó grande
-                    const libroGigante = document.querySelector('.abriendo-app');
-                    
-                    if (libroGigante) {
-                        // 2. Quitamos la clase de animación
-                        libroGigante.classList.remove('abriendo-app');
-                        
-                        // 3. Limpiamos todos los estilos que pusimos a mano
-                        libroGigante.style.position = '';
-                        libroGigante.style.top = '';
-                        libroGigante.style.left = '';
-                        libroGigante.style.width = '';
-                        libroGigante.style.height = '';
-                        libroGigante.style.margin = '';
-                        
-                        // 4. Devolvemos el scroll al cuerpo de la página
-                        document.body.style.overflow = 'auto';
-                    }
-                }
-            })
+        // --- FUNCIONES DEL VISOR DE LIBROS (MODAL) ---
         function abrirLibro(ruta) {
             const modal = document.getElementById('miModal');
             const iframe = document.getElementById('visor-pdf');
-            iframe.src = ruta;
-            modal.style.display = 'block';
-            document.body.style.overflow = 'hidden'; // <--- Añade esto para que sea más smooth
+            
+            // 1. Limpiamos el visor antes de cargar (vital para móviles)
+            iframe.src = ""; 
+            
+            // 2. Cargamos la ruta y mostramos el modal con un mínimo retraso
+            setTimeout(() => {
+                iframe.src = ruta;
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden'; // Bloquea el scroll de fondo
+            }, 50);
         }
 
         function cerrarLibro() {
             const modal = document.getElementById('miModal');
             const iframe = document.getElementById('visor-pdf');
+            
             modal.style.display = 'none';
-            iframe.src = ''; 
-            document.body.style.overflow = 'auto'; // <--- Añade esto para devolver el movimiento
+            iframe.src = ''; // Limpia el archivo al cerrar
+            document.body.style.overflow = 'auto'; // Devuelve el scroll
         }
 
-        // Cerrar si hace clic fuera del libro
+        // Cerrar si hace clic fuera del contenido blanco del libro
         window.onclick = function(event) {
             const modal = document.getElementById('miModal');
-            if (event.target == modal) { cerrarLibro(); }
+            if (event.target == modal) { 
+                cerrarLibro(); 
+            }
         };
         </script>
         <script defer src="/_vercel/insights/script.js"></script>
