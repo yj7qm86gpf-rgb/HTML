@@ -425,7 +425,7 @@
             </div>
         </div>
         <script>
-            // --- LÓGICA DE ACCESO Y CONTRASEÑA ---
+        // --- LÓGICA DE ACCESO Y CONTRASEÑA ---
         const passwordCorrecta = "1234"; 
         const contenido = document.getElementById('contenido-protegido');
 
@@ -444,7 +444,6 @@
             }
         }
 
-        // --- FUNCIÓN PARA ACTIVAR ANIMACIONES AL BAJAR (SCROLL) ---
         function iniciarFunciones() {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
@@ -453,41 +452,42 @@
                     }
                 });
             }, { threshold: 0.1 });
-
             document.querySelectorAll('.revelar').forEach(el => observer.observe(el));
         }
 
-        // --- FUNCIONES DEL VISOR DE LIBROS (MODAL) ---
+        // --- FUNCIÓN INTELIGENTE PARA ABRIR LIBROS ---
         function abrirLibro(ruta) {
-            const modal = document.getElementById('miModal');
-            const iframe = document.getElementById('visor-pdf');
-            
-            // 1. Limpiamos el visor antes de cargar (vital para móviles)
-            iframe.src = ""; 
-            
-            // 2. Cargamos la ruta y mostramos el modal con un mínimo retraso
-            setTimeout(() => {
-                iframe.src = ruta;
-                modal.style.display = 'block';
-                document.body.style.overflow = 'hidden'; // Bloquea el scroll de fondo
-            }, 50);
+            // Detectamos si es un dispositivo móvil
+            const esMovil = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+            if (esMovil) {
+                // EXCLUSIVAMENTE EN MÓVIL: Se abre en pestaña nueva (como antes)
+                window.open(ruta, '_blank');
+            } else {
+                // EN PC: Se abre el visor elegante (modal)
+                const modal = document.getElementById('miModal');
+                const iframe = document.getElementById('visor-pdf');
+                
+                iframe.src = ""; 
+                setTimeout(() => {
+                    iframe.src = ruta;
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }, 50);
+            }
         }
 
         function cerrarLibro() {
             const modal = document.getElementById('miModal');
             const iframe = document.getElementById('visor-pdf');
-            
             modal.style.display = 'none';
-            iframe.src = ''; // Limpia el archivo al cerrar
-            document.body.style.overflow = 'auto'; // Devuelve el scroll
+            iframe.src = ''; 
+            document.body.style.overflow = 'auto';
         }
 
-        // Cerrar si hace clic fuera del contenido blanco del libro
         window.onclick = function(event) {
             const modal = document.getElementById('miModal');
-            if (event.target == modal) { 
-                cerrarLibro(); 
-            }
+            if (event.target == modal) { cerrarLibro(); }
         };
         </script>
         <script defer src="/_vercel/insights/script.js"></script>
