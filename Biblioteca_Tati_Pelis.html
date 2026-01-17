@@ -278,45 +278,56 @@
         </div>
 
 
-        <div class="contenedor_1">
-            <div class="c1_1" id="activar-musica" style="cursor: pointer;">
+       <div class="contenedor_1">
+            <div class="c1_1" onclick="prepararMusica('archivos y fotos/Invisible string (Adrian\'s version) [tgVUi1gl29k].mp3', 'Invisible String (Adrian\'s version)')" style="cursor: pointer;">
                 <img src="archivos y fotos/Cubierta Adrian.webp" class="Invisible_String" width="225"><br>
                 Invisible String (Adrian's version)
             </div>
+            
+            <div class="c1_2" onclick="prepararMusica('archivos y fotos/The Archer Instrumental - Taylor Swift.mp3', 'The Archer (Adrian\'s version)')" style="cursor: pointer;">
+                <img src="archivos y fotos/Portada The Archer.webp" class="The_Archer" width="225"><br>
+                The Archer (Adrian's version)
+            </div>
         </div>
+        
         <div id="barra-reproductor" class="barra-musica">
             <div class="info-cancion">
-                <strong>Sonando ahora:</strong> Invisible String (Adrian's version)
+                <strong>Sonando ahora:</strong> <span id="titulo-cancion">---</span>
             </div>
             
             <audio id="reproductor-audio" controls>
-                <source src="archivos y fotos/Invisible string (Adrian's version) [tgVUi1gl29k].mp3" type="audio/mpeg">
+                <source id="audio-source" src="" type="audio/mpeg">
                 Tu navegador no soporta audio.
             </audio>
 
             <button onclick="cerrarReproductor()" class="boton-cerrar">✕</button>
         </div>
         <script>
-            // Comprobamos si el usuario viene de validar la contraseña en el index
+            // Verificación de acceso
             if (sessionStorage.getItem('accesoPermitido') !== 'true') {
-                // Si no tiene el "permiso", lo mandamos de vuelta al index
                 window.location.href = "index.html"; 
             }
 
-            const botonDisco = document.getElementById('activar-musica');
             const barra = document.getElementById('barra-reproductor');
             const audio = document.getElementById('reproductor-audio');
+            const titulo = document.getElementById('titulo-cancion');
 
-            botonDisco.addEventListener('click', function() {
-                // Mostramos la barra
+            function prepararMusica(archivo, nombre) {
+                // 1. Cambiamos el título
+                titulo.innerText = nombre;
+                
+                // 2. Cambiamos la fuente del audio
+                audio.src = archivo;
+                
+                // 3. Cargamos y reproducimos
+                audio.load();
                 barra.classList.add('activa');
-                // Reproducimos automáticamente
                 audio.play();
-            });
+            }
 
             function cerrarReproductor() {
                 barra.classList.remove('activa');
-                audio.pause(); // Opcional: pausar si se cierra la barra
+                audio.pause();
             }
         </script>
     </body>
